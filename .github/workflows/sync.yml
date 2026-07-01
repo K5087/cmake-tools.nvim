@@ -1,0 +1,64 @@
+name: Sync upstream
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 5"
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: sync-upstream-main
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout fork
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Add upstream
+        run: |
+          git remote add upstream https://github.com/Civitasv/cmake-tools.nvim.git
+          git fetch upstream
+
+      - name: Merge upstream
+        id: merge
+        continue-on-error: true
+        run: |
+          git checkout master
+          git merge upstream/master --no-edit
+
+      - name: Push changes
+        if: steps.merge.outcome == 'success'
+        run: |
+          git push origin master
+
+      - name: Notify on merge failure
+        if: steps.merge.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --title "Fork sync failed: upstream merge conflict" \
+            --body "Automatic sync from upstream failed.
+
+          @K5087
+
+          Repository: ${{ github.repository }}
+          Branch: main
+          Upstream: UPSTREAM_OWNER/UPSTREAM_REPO
+          Workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+          Please resolve the conflict manually."
