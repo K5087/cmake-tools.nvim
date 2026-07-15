@@ -73,6 +73,7 @@ function M.exit()
   end
   if M.on_exit ~= nil and type(M.on_exit) == "function" then
     M.on_exit(str)
+    M.on_exit = nil
   end
 end
 

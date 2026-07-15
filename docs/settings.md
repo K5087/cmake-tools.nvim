@@ -69,10 +69,10 @@ env = {
 }
 ```
 
-| Command               | Supported          | Details                 |
-|--------------         | --------------     |  --------------         |
-| `CMakeSettings`       | :white_check_mark: | environment varaibles for executing cmake commands. These are per default inherit to targets.  |
-| `CMakeTargetSettings` | :white_check_mark: | environment variables for running and debugging targets.    |
+| Command               | Supported          | Details                                                                                       |
+| --------------------- | ------------------ | --------------------------------------------------------------------------------------------- |
+| `CMakeSettings`       | :white_check_mark: | environment varaibles for executing cmake commands. These are per default inherit to targets. |
+| `CMakeTargetSettings` | :white_check_mark: | environment variables for running and debugging targets.                                      |
 
 ### `inherit_base_environment`
 
@@ -80,9 +80,9 @@ env = {
   inherit_base_environment = true -- true|false
 ```
 
-| Command               | Supported          | Details                 |
-|--------------         | --------------     |  --------------         |
-| `CMakeSettings`       | :x:                | |
+| Command               | Supported          | Details                                                      |
+| --------------------- | ------------------ | ------------------------------------------------------------ |
+| `CMakeSettings`       | :x:                |                                                              |
 | `CMakeTargetSettings` | :white_check_mark: | Will inherit env various from base settings if set to `true` |
 
 ### `args`
@@ -93,9 +93,9 @@ Specify additional command line arguments.
   args = { "arg1", "args2=value" }
 ```
 
-| Command               | Supported          | Details                 |
-|--------------         | --------------     |  --------------         |
-| `CMakeSettings`       | :x:                | |
+| Command               | Supported          | Details                                                               |
+| --------------------- | ------------------ | --------------------------------------------------------------------- |
+| `CMakeSettings`       | :x:                |                                                                       |
 | `CMakeTargetSettings` | :white_check_mark: | command line arguments passed to executable when running or debugging |
 
 ### `working_directory`
@@ -106,9 +106,9 @@ Specify the working directory in which run and debug commands are executed. Supp
   working_directory = "${dir.binary}"
 ```
 
-| Command               | Supported          | Details                 |
-|--------------         | --------------     |  --------------         |
-| `CMakeSettings`       | :white_check_mark: | Defines the working directory for all targets unless overwritten. |
+| Command               | Supported          | Details                                                                                       |
+| --------------------- | ------------------ | --------------------------------------------------------------------------------------------- |
+| `CMakeSettings`       | :white_check_mark: | Defines the working directory for all targets unless overwritten.                             |
 | `CMakeTargetSettings` | :white_check_mark: | Sets the working directory just for this target. No default value - Has to be added manually. |
 
 ### `use_preset`
@@ -119,10 +119,10 @@ Specify if the `--presets` argument should be used on `cmake` commands. This is 
   use_preset = true
 ```
 
-| Command               | Supported          | Details                 |
-|--------------         | --------------     |  --------------         |
+| Command               | Supported          | Details                                                                               |
+| --------------------- | ------------------ | ------------------------------------------------------------------------------------- |
 | `CMakeSettings`       | :white_check_mark: | Flag controlling if the `--presets` argument should be passed to the `cmake` commands |
-| `CMakeTargetSettings` | :x: | |
+| `CMakeTargetSettings` | :x:                |                                                                                       |
 
 ### `build_directory`
 
@@ -132,10 +132,10 @@ Specify the build directory in which generate files should locate.
   build_directory = ""
 ```
 
-| Command               | Supported          | Details                 |
-|--------------         | --------------     |  --------------         |
+| Command               | Supported          | Details                      |
+| --------------------- | ------------------ | ---------------------------- |
 | `CMakeSettings`       | :white_check_mark: | Defines the build directory. |
-| `CMakeTargetSettings` | :x: | |
+| `CMakeTargetSettings` | :x:                |                              |
 
 ### `generate_options`
 
@@ -145,10 +145,10 @@ Specify the generate options for cmake project.
   generate_options = {}
 ```
 
-| Command               | Supported          | Details                 |
-|--------------         | --------------     |  --------------         |
+| Command               | Supported          | Details                       |
+| --------------------- | ------------------ | ----------------------------- |
 | `CMakeSettings`       | :white_check_mark: | Defines the generate options. |
-| `CMakeTargetSettings` | :x: | |
+| `CMakeTargetSettings` | :x:                |                               |
 
 ### `build_options`
 
@@ -158,7 +158,7 @@ Specify the build options for cmake project.
   build_options = {}
 ```
 
-| Command               | Supported          | Details                 |
-|--------------         | --------------     |  --------------         |
+| Command               | Supported          | Details                                    |
+| --------------------- | ------------------ | ------------------------------------------ |
 | `CMakeSettings`       | :white_check_mark: | Defines the build options for all targets. |
-| `CMakeTargetSettings` | :x: | |
+| `CMakeTargetSettings` | :x:                |                                            |
