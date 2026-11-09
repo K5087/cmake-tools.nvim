@@ -14,10 +14,10 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Clone repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v5
 
       - name: Stylua
-        uses: JohnnyMorganz/stylua-action@v3
+        uses: JohnnyMorganz/stylua-action@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           version: v0.17.1 # NOTE: we recommend pinning to a specific version in case of formatting changes
@@ -25,7 +25,7 @@ jobs:
   tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Prepare dependencies
         run: |
           mkdir -p _neovim
