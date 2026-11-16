@@ -100,7 +100,7 @@ function ctest.stop()
   ctest.job:shutdown(1, 9)
 
   for _, pid in ipairs(vim.api.nvim_get_proc_children(ctest.job.pid)) do
-    vim.loop.kill(pid, 9)
+    vim.uv.kill(pid, 9)
   end
 end
 

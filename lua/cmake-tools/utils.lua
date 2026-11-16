@@ -120,7 +120,7 @@ function utils.copyfile(src, target)
     return
   end
 
-  local ok, err = vim.loop.fs_copyfile(src, target)
+  local ok, err = vim.uv.fs_copyfile(src, target)
   if not ok then
     log.error("Cannot copy " .. src .. " to " .. target .. ": " .. tostring(err))
   end
@@ -131,10 +131,16 @@ function utils.softlink(src, target)
     return
   end
 
-  local stat = vim.loop.fs_lstat(target)
+  local stat = vim.uv.fs_lstat(target)
   if stat then
     if stat.type == "link" then
-      if vim.loop.fs_readlink(target) == src then
+      local linked_path, err = vim.uv.fs_readlink(target)
+      if not linked_path then
+        log.error("Cannot read link: " .. tostring(err))
+        return
+      end
+
+      if vim.fs.normalize(linked_path) == vim.fs.normalize(src) then
         return
       end
     else
@@ -147,7 +153,7 @@ function utils.softlink(src, target)
     return
   end
 
-  local ok, err = vim.loop.fs_symlink(src, target)
+  local ok, err = vim.uv.fs_symlink(src, target)
   if not ok then
     log.error("Cannot link " .. target .. " to " .. src .. ": " .. tostring(err))
   end

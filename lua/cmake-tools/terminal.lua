@@ -791,7 +791,7 @@ function _terminal.stop(opts)
   local main_pid = vim.api.nvim_buf_get_var(_terminal.id, "terminal_job_pid")
   local child_procs = vim.api.nvim_get_proc_children(main_pid)
   for _, pid in ipairs(child_procs) do
-    vim.loop.kill(pid, 9)
+    vim.uv.kill(pid, 9)
   end
 end
 

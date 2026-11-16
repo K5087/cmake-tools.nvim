@@ -27,7 +27,7 @@ function Notification:new(type)
   instance.closed = true
   instance.enabled = has_notify and config[type].enabled
 
-  instance.spinnerTimer = vim.loop.new_timer()
+  instance.spinnerTimer = vim.uv.new_timer()
 
   return instance
 end

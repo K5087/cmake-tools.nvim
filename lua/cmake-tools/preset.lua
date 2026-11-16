@@ -32,7 +32,7 @@ local function expandMacro(self, str)
   if self.generator then
     str = str:gsub("${generator}", self.generator)
   end
-  str = str:gsub("${hostSystemName}", osys.iswin32 and "Windows" or vim.loop.os_uname().sysname)
+  str = str:gsub("${hostSystemName}", osys.iswin32 and "Windows" or vim.uv.os_uname().sysname)
   str = str:gsub("${fileDir}", source_path.filename)
   str = str:gsub("${dollar}", "$")
   str = str:gsub("${pathListSep}", "/")

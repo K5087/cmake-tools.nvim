@@ -22,7 +22,7 @@ local const = {
     -- lsp:       this will automatically set compile commands file location using lsp
     -- none:      this will make this option ignored
     ---@type string|fun(): string
-    target = vim.loop.cwd, -- path or function returning path to directory, this is used only if action == "soft_link" or action == "copy"
+    target = vim.uv.cwd, -- path or function returning path to directory, this is used only if action == "soft_link" or action == "copy"
   },
   cmake_kits_path = nil, -- this is used to specify global cmake kits path, see CMakeKits for detailed usage
   cmake_variants_message = {

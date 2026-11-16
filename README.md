@@ -12,7 +12,7 @@ The goal of this plugin is to offer a comprehensive, convenient, and powerful wo
 
 ## :sparkles: Installation
 
-- Require Neovim (>=0.7).
+- Require Neovim (>=0.10).
 - Require [plenary](https://github.com/nvim-lua/plenary.nvim).
 - Allow integerating with [overseer](https://github.com/stevearc/overseer.nvim), optional, if you want this feature, please install it firstly.
 - Allow integerating with [toggleterm](https://github.com/akinsho/toggleterm.nvim), optional, if you want this feature, please install it firstly.
@@ -49,7 +49,7 @@ require("cmake-tools").setup {
                           -- copy:      this will automatically copy compile commands file to target
                           -- lsp:       this will automatically set compile commands file location using lsp
                           -- none:      this will make this option ignored
-    target = vim.loop.cwd, -- path or function returning path to directory, this is used only if action == "soft_link" or action == "copy"
+    target = vim.uv.cwd, -- path or function returning path to directory, this is used only if action == "soft_link" or action == "copy"
   },
   cmake_kits_path = nil, -- this is used to specify global cmake kits path, see CMakeKits for detailed usage
   cmake_variants_message = {
@@ -167,11 +167,11 @@ require("cmake-tools").setup {
 
 Generally, the default is enough.
 
-*And attention, when you firstly enter a new project, a session file for this project will be created, and `cmake_generate_options`, `cmake_build_options`, `cmake_build_directory` in your configuration will be used to initialize some fields of it. Then, if you reopen this project, it will reuse this session file to initialize these fields, or, you can think this project has its own settings, so if you change the values in global configuration, it will not reflect on these projects, you should refresh these fields by your own. Also see [session docs](./docs/sessions.md) and issue [#162](https://github.com/Civitasv/cmake-tools.nvim/issues/162).*
+_And attention, when you firstly enter a new project, a session file for this project will be created, and `cmake_generate_options`, `cmake_build_options`, `cmake_build_directory` in your configuration will be used to initialize some fields of it. Then, if you reopen this project, it will reuse this session file to initialize these fields, or, you can think this project has its own settings, so if you change the values in global configuration, it will not reflect on these projects, you should refresh these fields by your own. Also see [session docs](./docs/sessions.md) and issue [#162](https://github.com/Civitasv/cmake-tools.nvim/issues/162)._
 
 ## :magic_wand: Docs
 
-*Our plugin will automatically create a buffer named \*cmake-tools\*, all commands executed by this plugin will be dumped in this buffer, so when something goes wrong, you can know excatly what happend.*
+_Our plugin will automatically create a buffer named \*cmake-tools\*, all commands executed by this plugin will be dumped in this buffer, so when something goes wrong, you can know excatly what happend._
 
 1. [basic usage](./docs/basic_usage.md)
 2. [settings](./docs/settings.md)

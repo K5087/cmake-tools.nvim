@@ -55,7 +55,7 @@ function Config:new(const)
     }, -- general config
     target_settings = {}, -- target specific config
     env_script = " ",
-    cwd = vim.loop.cwd(),
+    cwd = vim.uv.cwd(),
   }
   setmetatable(obj, Config)
 

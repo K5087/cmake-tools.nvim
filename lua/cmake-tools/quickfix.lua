@@ -105,7 +105,7 @@ function _quickfix.stop(opts)
   _quickfix.job:shutdown(1, 9)
 
   for _, pid in ipairs(vim.api.nvim_get_proc_children(_quickfix.job.pid)) do
-    vim.loop.kill(pid, 9)
+    vim.uv.kill(pid, 9)
   end
 end
 

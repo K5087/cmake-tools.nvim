@@ -36,7 +36,7 @@ function cmake.setup(values)
   require("cmake-tools.notification").setup(const.cmake_notifications)
 
   config = Config:new(const)
-  cwd = vim.loop.cwd()
+  cwd = vim.uv.cwd()
 
   -- auto reload previous session
   local old_config = _session.load(cwd)
@@ -1753,7 +1753,7 @@ function cmake.register_autocmd()
   cwd_changed_id = vim.api.nvim_create_autocmd("DirChanged", {
     group = group,
     callback = function()
-      local current_cwd = vim.loop.cwd()
+      local current_cwd = vim.uv.cwd()
       if current_cwd == cwd then
         return
       end

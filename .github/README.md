@@ -1,4 +1,3 @@
-
 # Forked Explanation
 
 This fork is mainly for my personal use, with a few bug fixes applied.
@@ -13,12 +12,18 @@ This fork is mainly for my personal use, with a few bug fixes applied.
 
 ## Deprecated List
 
-2. **nvim[_buf|_win]_[gs]et_option**
+1. **nvim[_buf|_win]_[gs]et_option**
 
-   The `nvim[_buf|_win]_[gs]et_option` functions were deprecated in Neovim
+   The `nvim[_buf|_win]_[gs]et_option` functions were deprecated in Neovim(0.10)
    in commit `549586b`.
 
    See the related comment in this PR: <https://github.com/neovim/neovim/pull/21474>
+
+2. **nvim.loop**
+
+   The `nvim.loop` were deprecated in Neovim(0.10) in commit `ea77b8e`.
+
+   See the related comment in this PR: <https://github.com/neovim/neovim/pull/22846>
 
 ## Improved List
 

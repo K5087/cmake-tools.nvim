@@ -57,7 +57,7 @@ describe("utils.run", function()
   it("stops spinner when run completes", function()
     local utils = require("cmake-tools.utils")
 
-    utils.run("ctest", "", {}, {}, vim.loop.cwd(), { name = "fake", opts = {} }, nil)
+    utils.run("ctest", "", {}, {}, vim.uv.cwd(), { name = "fake", opts = {} }, nil)
 
     assert.equals(1, stub_notification.start_calls)
     assert.equals(1, stub_notification.stop_calls)
